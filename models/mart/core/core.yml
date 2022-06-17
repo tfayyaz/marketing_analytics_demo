@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: dim_account
+    description: "The Account Dimension Table"
+    columns:
+      - name: account_id
+        description: "Account ID Primary key"
+        tests:
+          - not_null
