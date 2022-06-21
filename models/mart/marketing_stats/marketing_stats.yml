@@ -1,5 +1,0 @@
-version: 2
-
-models:
-  - name: account_email_opens
-  - name: country_email_click_ratio

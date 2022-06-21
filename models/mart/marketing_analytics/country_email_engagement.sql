@@ -1,25 +1,16 @@
 with accounts as (
-	select * 
+	select 
+        account_id,
+        billing_country
 	from {{ ref('dim_account') }}
 ), users as (
-	select * 
+	select 
+        lead_id,
+        account_id
 	from {{ ref('dim_user') }} 
-), opens as (
-	select * 
-	from {{ ref('fct_email_opens') }} 
-), clicks as (
-	select * 
-	from {{ ref('fct_email_clicks') }} 
 ), opens_clicks_joined as (
 
-    select 
-    o.lead_id as lead_id,
-    o.activity_timestamp as open_ts,
-    c.activity_timestamp as click_ts
-    from opens as o 
-    left join clicks as c 
-    on o.email_send_id = c.email_send_id
-    and o.lead_id = c.lead_id
+    select * from {{ ref('int_email_open_clicks_joined') }} 
 
 ), joined as (
 
