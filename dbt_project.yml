@@ -62,9 +62,6 @@ models:
   marketo_source:
     +materialized: table
     +schema: staging # leave blank for just the target_schema
-  salesforce_source:
-    +schema: staging # leave blank for just the target_schema
-  marketo_source:
     tmp:
       stg_marketo__activity_email_bounced_tmp:
         +enabled: false
@@ -74,6 +71,8 @@ models:
       +enabled: false
     stg_marketo__email_template_history:
       +enabled: false
+  salesforce_source:
+    +schema: staging # leave blank for just the target_schema
   
   # marketo:
   #   intermediate:
