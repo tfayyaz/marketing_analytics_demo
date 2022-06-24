@@ -36,10 +36,10 @@ dispatch:
 
 vars:
   marketo_source:
-    marketo_database: # leave blank to use the default catalog 
+    marketo_database: hive_metastore # leave blank to use the default catalog 
     marketo_schema: marketing_marketo
   salesforce_source:
-    salesforce_database: # leave blank to use the default catalog 
+    salesforce_database: hive_metastore # leave blank to use the default catalog 
     salesforce_schema: marketing_sfdc_fivetran
   
 
@@ -61,7 +61,7 @@ models:
       +materialized: table
   marketo_source:
     +materialized: table
-    +schema: staging # leave blank for just the target_schema
+    +schema:  # leave blank for just the target_schema
     tmp:
       stg_marketo__activity_email_bounced_tmp:
         +enabled: false
@@ -72,7 +72,8 @@ models:
     stg_marketo__email_template_history:
       +enabled: false
   salesforce_source:
-    +schema: staging # leave blank for just the target_schema
+    +materialized: table
+    +schema:  # leave blank for just the target_schema
   
   # marketo:
   #   intermediate:
